@@ -137,6 +137,8 @@ ForEach ($group in $fileGroups) {
     $screenArgs += "/Add-Filegroup:$($group.fileGroupName)"
 }
 
+&filescrn.exe $screenArgs
+
 Write-Host "Adding/replacing File Screens.."
 $drivesContainingShares | % {
     Write-Host "`tAdding/replacing File Screen for [$_] with Source Template [$fileTemplateName].."
