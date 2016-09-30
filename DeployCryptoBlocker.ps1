@@ -11,26 +11,6 @@
 
 ################################ Functions ################################
 
-Function PurgeNonAdminDirectoryPermissions([string] $directory)
-{
-    $acl = Get-Acl $directory
-
-    if ($acl.AreAccessRulesProtected)
-    {
-        $acl.Access | % { $acl.PurgeAccessRules($_.IdentityReference) }
-    }
-    else
-    {
-        $acl.SetAccessRuleProtection($true, $true)
-    }
-
-    $ar = New-Object System.Security.AccessControl.FileSystemAccessRule("SYSTEM","FullControl","Allow")
-    $acl.AddAccessRule($ar)
-    $ar = $ar = New-Object System.Security.AccessControl.FileSystemAccessRule("BUILTIN\Administrators","FullControl","Allow")
-    $acl.AddAccessRule($ar)
-    Set-Acl -AclObject $acl -Path $directory
-}
-
 function ConvertFrom-Json20([Object] $obj)
 {
     Add-Type -AssemblyName System.Web.Extensions
@@ -142,118 +122,6 @@ ForEach ($group in $fileGroups) {
     $group | Add-Member -MemberType NoteProperty -Name fileGroupName -Value "$FileGroupName$($group.index)"
 }
 
-$scriptFilename = "C:\FSRMScripts\KillUserSession.ps1"
-$batchFilename = "C:\FSRMScripts\KillUserSession.bat"
-$eventConfFilename = "$env:Temp\cryptoblocker-eventnotify.txt"
-$cmdConfFilename = "$env:Temp\cryptoblocker-cmdnotify.txt"
-
-$scriptConf = @'
-param([string] $DomainUser)
-
-Function DenySharePermission ([string] $ShareName, [string] $DomainUser)
-{
-    $domainUserSplit = $DomainUser.Split("\")
-
-    $trusteeClass = [wmiclass] "ROOT\CIMV2:Win32_Trustee"
-    $trustee = $trusteeClass.CreateInstance()
-    $trustee.Domain = $domainUserSplit[0]
-    $trustee.Name = $domainUserSplit[1]
-
-    $aceClass = [wmiclass] "ROOT\CIMV2:Win32_ACE"
-    $ace = $aceClass.CreateInstance()
-    $ace.AccessMask = 2032127
-    $ace.AceType = 1
-    $ace.Trustee = $trustee
-
-    $shss = Get-WmiObject -Class Win32_LogicalShareSecuritySetting -Filter "Name='$ShareName'"
-    $sd = Invoke-WmiMethod -InputObject $shss -Name GetSecurityDescriptor | Select -ExpandProperty Descriptor
-
-    $sclass = [wmiclass] "ROOT\CIMV2:Win32_SecurityDescriptor"
-    $newsd = $sclass.CreateInstance()
-    $newsd.ControlFlags = $sd.ControlFlags
-
-    foreach ($oace in $sd.DACL)
-    {
-        $newsd.DACL +=  [System.Management.ManagementBaseObject] $oace
-    }
-
-    $newsd.DACL += [System.Management.ManagementBaseObject] $ace
-
-    $share = Get-WmiObject -Class Win32_LogicalShareSecuritySetting -Filter "Name='$ShareName'"
-    $setResult = $share.SetSecurityDescriptor($newsd)
-
-    return $setResult.ReturnValue
-}
-
-
-# Let's try altering share permissions..
-$Username = $DomainUser.Split("\")[1]
-
-$affectedShares = Get-WmiObject -Class Win32_Share |
-                    Select Name, Path, Type |
-                    Where { $_.Type -eq 0 }
-
-$affectedShares | % {
-    Write-Host "Denying [$DomainUser] access to share [$($_.Name)].."
-    DenySharePermission -ShareName $_.Name -DomainUser $DomainUser
-}
-
-Write-Host $affectedShares
-'@
-
-$batchConf = @"
-@echo off
-powershell.exe -ExecutionPolicy Bypass -File "$scriptFilename" -DomainUser %1
-"@
-
-$scriptDirectory = Split-Path -Parent $scriptFilename
-$batchDirectory = Split-Path -Parent $batchFilename
-
-if (-not (Test-Path $scriptDirectory))
-{
-    Write-Host "Script directory [$scriptDirectory] not found. Creating.."
-    New-Item -Path $scriptDirectory -ItemType Directory
-}
-
-if (-not (Test-Path $batchDirectory))
-{
-    Write-Host "Batch directory [$batchDirectory] not found. Creating.."
-    New-Item -Path $batchDirectory -ItemType Directory
-}
-
-# FSRM stipulates that the command directories/files can only be accessible by SYSTEM or Administrators
-# As a result, we lock down permissions for SYSTEM and local admin only
-Write-Host "Purging Non-Admin NTFS permissions on script directory [$scriptDirectory].."
-PurgeNonAdminDirectoryPermissions($scriptDirectory)
-Write-Host "Purging Non-Admin NTFS permissions on batch directory [$batchDirectory].."
-PurgeNonAdminDirectoryPermissions($batchDirectory)
-
-Write-Host "Writing defensive PowerShell script to location [$scriptFilename].."
-$scriptConf | Out-File -Encoding ASCII $scriptFilename
-Write-Host "Writing batch script launcher to location [$batchFilename].."
-$batchConf | Out-File -Encoding ASCII $batchFilename
-
-$eventConf = @"
-Notification=E
-RunLimitInterval=0
-EventType=Warning
-Message=User [Source Io Owner] attempted to save [Source File Path] to [File Screen Path] on the [Server] server. This file is in the [Violated File Group] file group, which is not permitted on the server.  An attempt has been made at blocking this user.
-"@
-
-$cmdConf = @"
-Notification=C
-RunLimitInterval=0
-Command=$batchFilename
-Arguments=[Source Io Owner]
-MonitorCommand=Enable
-Account=LocalSystem
-"@
-
-Write-Host "Writing temporary FSRM Event Viewer configuration to location [$eventConfFilename].."
-$eventConf | Out-File $eventConfFilename
-Write-Host "Writing temporary FSRM Command configuration to location [$cmdConfFilename].."
-$cmdConf | Out-File $cmdConfFilename
-
 # Perform these steps for each of the 4KB limit split fileGroups
 ForEach ($group in $fileGroups) {
     Write-Host "Adding/replacing File Group [$($group.fileGroupName)] with monitored file [$($group.array -Join ",")].."
@@ -277,8 +145,3 @@ $drivesContainingShares | % {
     &filescrn.exe Screen Delete "/Path:$_" /Quiet
     &filescrn.exe Screen Add "/Path:$_" "/SourceTemplate:$fileTemplateName"
 }
-
-Write-Host "Removing temporary FSRM Event Viewer configuration file [$eventConfFilename].."
-Write-Host "Removing temporary FSRM Event Viewer configuration file [$cmdConfFilename].."
-Remove-Item $eventConfFilename
-Remove-Item $cmdConfFilename
