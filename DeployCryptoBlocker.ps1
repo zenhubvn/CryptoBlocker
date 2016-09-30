@@ -136,8 +136,6 @@ $screenArgs = 'Template','Add',"/Template:$fileTemplateName"
 ForEach ($group in $fileGroups) {
     $screenArgs += "/Add-Filegroup:$($group.fileGroupName)"
 }
-$screenArgs += "/Add-Notification:E,$eventConfFilename","/Add-Notification:C,$cmdConfFilename",'/Type:Passive'
-&filescrn.exe $screenArgs
 
 Write-Host "Adding/replacing File Screens.."
 $drivesContainingShares | % {
