@@ -1,14 +1,5 @@
-﻿# DeployCryptoBlocker.ps1
+# DeployCryptoBlocker.ps1
 #
-# This script performs the following actions:
-# 1) Checks for network shares
-# 2) Install File Server Resource Manager (FSRM) if missing
-# 3) Creates Batch and PowerShell scripts used by FSRM
-# 4) Creates a File Group within FSRM containing malicious extensions to screen on
-# 5) Creates a File Screen Template utilising this File Group, with an Event notification and Command notification
-#    to run the scripts created in Step 3)
-# 6) Creates File Screens utilising this template for each drive containing network shares
-
 ################################ Functions ################################
 
 function ConvertFrom-Json20([Object] $obj)
