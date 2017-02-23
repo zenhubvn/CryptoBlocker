@@ -107,6 +107,13 @@ $webClient = New-Object System.Net.WebClient
 $jsonStr = $webClient.DownloadString("https://fsrm.experiant.ca/api/v1/get")
 $monitoredExtensions = @(ConvertFrom-Json20($jsonStr) | % { $_.filters })
 
+$exclusions = Get-Content .\SkipList.txt
+ForEach ($exclusion in $exclusions) {
+    if ($exclusion) {
+        $monitoredExtensions = $monitoredExtensions.replace($exclusion.trim(),$null)
+    }
+}
+
 # Split the $monitoredExtensions array into fileGroups of less than 4kb to allow processing by filescrn.exe
 $fileGroups = New-CBArraySplit $monitoredExtensions
 ForEach ($group in $fileGroups) {
