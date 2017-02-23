@@ -7,6 +7,8 @@ The script will install File Server Resource Manager (FSRM), and set up the rele
 
 <b>Script Deployment Steps</b>
 
+<i>Before running, please add any known good file extensions used in your environment to SkipList.txt, one per line.  This will ensure that if a filescreen is added to the list in the future that blocks that specific file extension, your environment won't be affected as they will be automatically removed.</i>
+
 1. Checks for network shares
 2. Installs FSRM
 3. Create batch/PowerShell scripts used by FSRM
