@@ -107,12 +107,37 @@ $webClient = New-Object System.Net.WebClient
 $jsonStr = $webClient.DownloadString("https://fsrm.experiant.ca/api/v1/get")
 $monitoredExtensions = @(ConvertFrom-Json20($jsonStr) | % { $_.filters })
 
-$exclusions = Get-Content .\SkipList.txt
-ForEach ($exclusion in $exclusions) {
-    if ($exclusion) {
-        $monitoredExtensions = $monitoredExtensions.replace($exclusion.trim(),$null)
+
+If (TestPath .\SkipList.txt) {
+    $exclusions = Get-Content .\SkipList.txt
+    ForEach ($exclusion in $exclusions) {
+        if ($exclusion) {
+            $monitoredExtensions = $monitoredExtensions.replace($exclusion.trim(),$null)
+        }
     }
 }
+Else 
+{
+    $emptyFile = `
+`
+"#
+# Add one filescreen per line that you want to ignore
+#
+# For example, if *.doc files are being blocked by the list but you want 
+# to allow them, simply add a new line in this file that exactly matches 
+# the filescreen:
+#
+# *.doc
+#
+# The script will check this file every time it runs and remove these 
+# entries before applying the list to your FSRM implementation.
+#
+
+"
+    Add-Content .\SkipList.txt $emptyFile
+
+}
+
 
 # Split the $monitoredExtensions array into fileGroups of less than 4kb to allow processing by filescrn.exe
 $fileGroups = New-CBArraySplit $monitoredExtensions
