@@ -185,34 +185,26 @@ ForEach ($group in $fileGroups) {
 
 &filescrn.exe $screenArgs
 
-# Create a random string of 5 ASCII characters for temporary file names
-$RandomString = -Join ((65..90) + (97..122) | Get-Random -Count 5 | % {[char]$_})
-
-If (Test-Path .\EmailNotification$RandomString.txt) {
-    Remove-Item .\EmailNotification$RandomString.txt    
-}
-If (Test-Path .\EventNotification$RandomString.txt) {
-    Remove-Item .\EventNotification$RandomString.txt    
-}
+$EmailNotification = New-TemporaryFile
+$EventNotification = New-TemporaryFile
 
 # Write the email options to the temporary file
-"Notification=m" >> .\EmailNotification$RandomString.txt 
-"To=[Admin Email]" >> .\EmailNotification$RandomString.txt 
-"Subject=Unauthorized file from the [Violated File Group] file group detected" >> .\EmailNotification.txt 
-"Message=User [Source Io Owner] attempted to save [Source File Path] to [File Screen Path] on the [Server] server. This file is in the [Violated File Group] file group, which is not permitted on the server."  >> .\EmailNotification$RandomString.txt 
+"Notification=m" >> $EmailNotification.FullName
+"To=[Admin Email]" >> $EmailNotification.FullName
+"Subject=Unauthorized file from the [Violated File Group] file group detected" >> $EmailNotification.FullName
+"Message=User [Source Io Owner] attempted to save [Source File Path] to [File Screen Path] on the [Server] server. This file is in the [Violated File Group] file group, which is not permitted on the server."  >> $EmailNotification.FullName
 
 # Write the event log options to the temporary file
-"Notification=e" >> .\EventNotification$RandomString.txt
-"EventType=Warning" >> .\EventNotification$RandomString.txt
-"Message=User [Source Io Owner] attempted to save [Source File Path] to [File Screen Path] on the [Server] server. This file is in the [Violated File Group] file group, which is not permitted on the server." >> .\EventNotification$RandomString.txt
+"Notification=e" >> $EventNotification.FullName 
+"EventType=Warning" >> $EventNotification.FullName 
+"Message=User [Source Io Owner] attempted to save [Source File Path] to [File Screen Path] on the [Server] server. This file is in the [Violated File Group] file group, which is not permitted on the server." >> $EventNotification.FullName 
 
 Write-Host "Adding/replacing File Screens.."
 $drivesContainingShares | ForEach-Object {
     Write-Host "`tAdding/replacing File Screen for [$_] with Source Template [$fileTemplateName].."
     &filescrn.exe Screen Delete "/Path:$_" /Quiet
-    &filescrn.exe Screen Add "/Path:$_" "/SourceTemplate:$fileTemplateName" /Add-Notification:m,EmailNotification$RandomString.txt /Add-Notification:e,EventNotification$RandomString.txt
+    &filescrn.exe Screen Add "/Path:$_" "/SourceTemplate:$fileTemplateName" /Add-Notification:m,$EmailNotification.FullName /Add-Notification:e,$EventNotification.FullName
 }
 
-# Remote the temporary files
-Remove-Item .\EmailNotification$RandomString.txt
-Remove-Item .\EventNotification$RandomString.txt
+Remove-Item $EmailNotification.FullName -Force
+Remove-Item $EventNotification.FullName -Force
