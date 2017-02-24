@@ -108,7 +108,7 @@ $jsonStr = $webClient.DownloadString("https://fsrm.experiant.ca/api/v1/get")
 $monitoredExtensions = @(ConvertFrom-Json20($jsonStr) | % { $_.filters })
 
 
-If (TestPath .\SkipList.txt) {
+If (Test-Path .\SkipList.txt) {
     $exclusions = Get-Content .\SkipList.txt
     ForEach ($exclusion in $exclusions) {
         if ($exclusion) {
