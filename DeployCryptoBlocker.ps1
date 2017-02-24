@@ -185,26 +185,26 @@ ForEach ($group in $fileGroups) {
 
 &filescrn.exe $screenArgs
 
-$EmailNotification = New-TemporaryFile
-$EventNotification = New-TemporaryFile
+$EmailNotification = $env:TEMP + "\tmpEmail001.tmp"
+$EventNotification = $env:TEMP + "\tmpEvent001.tmp"
 
 # Write the email options to the temporary file
-"Notification=m" >> $EmailNotification.FullName
-"To=[Admin Email]" >> $EmailNotification.FullName
-"Subject=Unauthorized file from the [Violated File Group] file group detected" >> $EmailNotification.FullName
-"Message=User [Source Io Owner] attempted to save [Source File Path] to [File Screen Path] on the [Server] server. This file is in the [Violated File Group] file group, which is not permitted on the server."  >> $EmailNotification.FullName
+"Notification=m" >> $EmailNotification
+"To=[Admin Email]" >> $EmailNotification
+"Subject=Unauthorized file from the [Violated File Group] file group detected" >> $EmailNotification
+"Message=User [Source Io Owner] attempted to save [Source File Path] to [File Screen Path] on the [Server] server. This file is in the [Violated File Group] file group, which is not permitted on the server."  >> $EmailNotification
 
 # Write the event log options to the temporary file
-"Notification=e" >> $EventNotification.FullName 
-"EventType=Warning" >> $EventNotification.FullName 
-"Message=User [Source Io Owner] attempted to save [Source File Path] to [File Screen Path] on the [Server] server. This file is in the [Violated File Group] file group, which is not permitted on the server." >> $EventNotification.FullName 
+"Notification=e" >> $EventNotification
+"EventType=Warning" >> $EventNotification
+"Message=User [Source Io Owner] attempted to save [Source File Path] to [File Screen Path] on the [Server] server. This file is in the [Violated File Group] file group, which is not permitted on the server." >> $EventNotification
 
 Write-Host "Adding/replacing File Screens.."
 $drivesContainingShares | ForEach-Object {
     Write-Host "`tAdding/replacing File Screen for [$_] with Source Template [$fileTemplateName].."
     &filescrn.exe Screen Delete "/Path:$_" /Quiet
-    &filescrn.exe Screen Add "/Path:$_" "/SourceTemplate:$fileTemplateName" /Add-Notification:m,$EmailNotification.FullName /Add-Notification:e,$EventNotification.FullName
+    &filescrn.exe Screen Add "/Path:$_" "/SourceTemplate:$fileTemplateName" /Add-Notification:m,$EmailNotification /Add-Notification:e,$EventNotification
 }
 
-Remove-Item $EmailNotification.FullName -Force
-Remove-Item $EventNotification.FullName -Force
+Remove-Item $EmailNotification -Force
+Remove-Item $EventNotification -Force
