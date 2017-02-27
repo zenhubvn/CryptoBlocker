@@ -203,7 +203,7 @@ Write-Host "Adding/replacing File Screens.."
 $drivesContainingShares | ForEach-Object {
     Write-Host "`tAdding/replacing File Screen for [$_] with Source Template [$fileTemplateName].."
     &filescrn.exe Screen Delete "/Path:$_" /Quiet
-    &filescrn.exe Screen Add "/Path:$_" "/SourceTemplate:$fileTemplateName" /Add-Notification:m,$EmailNotification /Add-Notification:e,$EventNotification
+    &filescrn.exe Screen Add "/Path:$_" "/SourceTemplate:$fileTemplateName" "/Add-Notification:m,$EmailNotification" "/Add-Notification:e,$EventNotification"
 }
 
 Remove-Item $EmailNotification -Force
