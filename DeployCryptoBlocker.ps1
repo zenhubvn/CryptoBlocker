@@ -118,11 +118,11 @@ Function New-CBArraySplit
 #                                ([System.IO.DirectoryInfo]$_).Root.Name  # Extract the driveletter, as a string
 #                            } | Sort-Object -Unique)               # remove duplicates
 
-$drivesContainingShares = 	@(Get-WmiObject Win32_Share 
-				| Select Name,Path,Type 
-				| Where-Object { $_.Type -match '0|2147483648' } 
-				| Select -ExpandProperty Path 
-				| Select -Unique)
+$drivesContainingShares = 	@(Get-WmiObject Win32_Share | 
+				Select Name,Path,Type | 
+				Where-Object { $_.Type -match '0|2147483648' } | 
+				Select -ExpandProperty Path | 
+				Select -Unique)
 
 
 if ($drivesContainingShares.Count -eq 0)
