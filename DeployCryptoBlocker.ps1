@@ -148,21 +148,38 @@ if ($majorVer -ge 6)
         # Server 2012
         Write-Host "`n####"
         Write-Host "FSRM not found.. Installing (2012).."
-        Install-WindowsFeature -Name FS-Resource-Manager -IncludeManagementTools
+
+        $install = Install-WindowsFeature -Name FS-Resource-Manager -IncludeManagementTools
+	if ($? -ne $True)
+	{
+		Write-Host "Install of FSRM failed."
+		exit
+	}
     }
     elseif ($minorVer -ge 1 -and $checkFSRM.Installed -ne "True")
     {
         # Server 2008 R2
         Write-Host "`n####"
 		Write-Host "FSRM not found.. Installing (2008 R2).."
-        Add-WindowsFeature FS-FileServer, FS-Resource-Manager
+        $install = Add-WindowsFeature FS-FileServer, FS-Resource-Manager
+	if ($? -ne $True)
+	{
+		Write-Host "Install of FSRM failed."
+		exit
+	}
+	
     }
     elseif ($checkFSRM.Installed -ne "True")
     {
         # Server 2008
         Write-Host "`n####"
 		Write-Host "FSRM not found.. Installing (2008).."
-        &servermanagercmd -Install FS-FileServer FS-Resource-Manager
+        $install = &servermanagercmd -Install FS-FileServer FS-Resource-Manager
+	if ($? -ne $True)
+	{
+		Write-Host "Install of FSRM failed."
+		exit
+	}
     }
 }
 else
