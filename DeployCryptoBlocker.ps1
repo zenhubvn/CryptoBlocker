@@ -73,7 +73,7 @@ Function New-CBArraySplit
     # temporary workingarray, tracking the length of the items in it and future commas
     $Extensions | ForEach-Object {
 
-        if (($LengthOfStringsInWorkingArray + 1 + $_.Length) -gt 4095) 
+        if (($LengthOfStringsInWorkingArray + 1 + $_.Length) -gt 4000) 
         {   
             # Adding this item to the working array (with +1 for a comma)
             # pushes the contents past the 4Kb limit
