@@ -110,35 +110,17 @@ Function New-CBArraySplit
 
 ################################ Program code ################################
 
-# Get all drives with shared folders, these drives will get FRSRM protection
-#$DrivesContainingShares = @(Get-WmiObject Win32_Share |            # all shares on this computer, filter:
-#                            Where-Object { $_.Type -eq 0 } |       # 0 = disk drives (not printers, IPC$, C$ Admin shares)
-#                            Select-Object -ExpandProperty Path |    # Shared folder path, e.g. "D:\UserFolders\"
-#                            ForEach-Object { 
-#                                ([System.IO.DirectoryInfo]$_).Root.Name  # Extract the driveletter, as a string
-#                            } | Sort-Object -Unique)               # remove duplicates
-
-$drivesContainingShares = 	@(Get-WmiObject Win32_Share | 
-				Select Name,Path,Type | 
-				Where-Object { $_.Type -match '0|2147483648' } | 
-				Select -ExpandProperty Path | 
-				Select -Unique)
-
-
-if ($drivesContainingShares.Count -eq 0)
-{
-    Write-Host "`n####"
-    Write-Host "No drives containing shares were found. Exiting.."
-    exit
-}
-
-Write-Host "`n####"
-Write-Host "The following shares needing to be protected: $($drivesContainingShares -Join ",")"
-
-
-# Identify Windows Server version, and install FSRM role
+# Identify Windows Server version, PowerShell version and install FSRM role
 $majorVer = [System.Environment]::OSVersion.Version.Major
 $minorVer = [System.Environment]::OSVersion.Version.Minor
+$powershellVer = $PSVersionTable.PSVersion.Major
+
+if ($powershellVer -le 2)
+{
+    Write-Host "`n####"
+    Write-Host "ERROR: PowerShell v3 or higher required."
+    exit
+}
 
 Write-Host "`n####"
 Write-Host "Checking File Server Resource Manager.."
@@ -196,11 +178,29 @@ else
     return
 }
 
+## Enumerate shares
+$drivesContainingShares =   @(Get-WmiObject Win32_Share | 
+                Select Name,Path,Type | 
+                Where-Object { $_.Type -match '0|2147483648' } | 
+                Select -ExpandProperty Path | 
+                Select -Unique)
+
+
+if ($drivesContainingShares.Count -eq 0)
+{
+    Write-Host "`n####"
+    Write-Host "No drives containing shares were found. Exiting.."
+    exit
+}
+
+Write-Host "`n####"
+Write-Host "The following shares needing to be protected: $($drivesContainingShares -Join ",")"
+
 # Download list of CryptoLocker file extensions
 Write-Host "`n####"
 Write-Host "Dowloading CryptoLocker file extensions list from fsrm.experiant.ca api.."
-$webClient = New-Object System.Net.WebClient
-$jsonStr = $webClient.DownloadString("https://fsrm.experiant.ca/api/v1/get")
+
+$jsonStr = Invoke-WebRequest -Uri https://fsrm.experiant.ca/api/v1/get
 $monitoredExtensions = @(ConvertFrom-Json20 $jsonStr | ForEach-Object { $_.filters })
 
 # Process SkipList.txt
