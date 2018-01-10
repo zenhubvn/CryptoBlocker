@@ -131,11 +131,11 @@ if ($majorVer -ge 6)
 {
     $checkFSRM = Get-WindowsFeature -Name FS-Resource-Manager
 
-    if ($minorVer -ge 2 -and $checkFSRM.Installed -ne "True")
+    if (($minorVer -ge 2 -or $majorVer -eq 10) -and $checkFSRM.Installed -ne "True")
     {
-        # Server 2012
+        # Server 2012 / 2016
         Write-Host "`n####"
-        Write-Host "FSRM not found.. Installing (2012).."
+        Write-Host "FSRM not found.. Installing (2012 / 2016).."
 
         $install = Install-WindowsFeature -Name FS-Resource-Manager -IncludeManagementTools
 	if ($? -ne $True)
