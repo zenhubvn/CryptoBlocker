@@ -179,11 +179,17 @@ else
 }
 
 ## Enumerate shares
-$drivesContainingShares =   @(Get-WmiObject Win32_Share | 
-                Select Name,Path,Type | 
-                Where-Object { $_.Type -match '0|2147483648' } | 
-                Select -ExpandProperty Path | 
-                Select -Unique)
+f (Test-Path .\ProtectList.txt)
+{
+    $drivesContainingShares = Get-Content .\ProtectList.txt | ForEach-Object { $_.Trim() }
+}
+Else {
+    $drivesContainingShares =   @(Get-WmiObject Win32_Share | 
+                    Select Name,Path,Type | 
+                    Where-Object { $_.Type -match '0|2147483648' } | 
+                    Select -ExpandProperty Path | 
+                    Select -Unique)
+}
 
 
 if ($drivesContainingShares.Count -eq 0)
