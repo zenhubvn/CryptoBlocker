@@ -28,6 +28,10 @@ Just run the script.  You can easily use this script to deploy the required FSRM
 
 An event will be logged by FSRM to the Event Viewer (Source = SRMSVC, Event ID = 8215), showing who tried to write a malicious file and where they tried to write it. Use your monitoring system of choice to raise alarms, tickets, etc for this event and respond accordingly.
 
+<b>ProtectList.txt</b>
+
+By default, this script will enumarate all the shares running on the server and add protections for them. If you would like to override this, you can create a <tt>ProtectList.txt</tt> file in the script's running directory. The contents of this file should be the folders you would like to protect, one per line. If this file exists, only the folders listed in it will be protected. If the file is empty or only has invalid entries, there will be no protected folders.
+
 <b>Disclaimer</b>
 
 This script is provided as is.  I can not be held liable if this does not thwart a ransomware infection, causes your server to spontaneously combust, results in job loss, etc.

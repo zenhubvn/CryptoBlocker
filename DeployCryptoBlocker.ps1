@@ -179,7 +179,7 @@ else
 }
 
 ## Enumerate shares
-f (Test-Path .\ProtectList.txt)
+if (Test-Path .\ProtectList.txt)
 {
     $drivesContainingShares = Get-Content .\ProtectList.txt | ForEach-Object { $_.Trim() }
 }
