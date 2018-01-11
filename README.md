@@ -32,6 +32,10 @@ An event will be logged by FSRM to the Event Viewer (Source = SRMSVC, Event ID =
 
 By default, this script will enumarate all the shares running on the server and add protections for them. If you would like to override this, you can create a <tt>ProtectList.txt</tt> file in the script's running directory. The contents of this file should be the folders you would like to protect, one per line. If this file exists, only the folders listed in it will be protected. If the file is empty or only has invalid entries, there will be no protected folders.
 
+<b>IncludeList.txt</b>
+
+Sometimes you have file screens that you want to add that are not included in the download from Experiant. In this case, you can simply create a file named <tt>IncludeList.txt</tt> and put the screens you would like to add, one per line. If this file does not exist, only the screens from Experiant are included.
+
 <b>Disclaimer</b>
 
 This script is provided as is.  I can not be held liable if this does not thwart a ransomware infection, causes your server to spontaneously combust, results in job loss, etc.

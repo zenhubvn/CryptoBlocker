@@ -237,6 +237,13 @@ Else
     Set-Content -Path .\SkipList.txt -Value $emptyFile
 }
 
+# Check to see if we have any local patterns to include
+If (Test-Path .\IncludeList.txt)
+{
+    $includeExt = Get-Content .\IncludeList.txt | ForEach-Object { $_.Trim() }
+    $monitoredExtensions = $monitoredExtensions + $includeExt
+}
+
 # Split the $monitoredExtensions array into fileGroups of less than 4kb to allow processing by filescrn.exe
 $fileGroups = @(New-CBArraySplit $monitoredExtensions)
 
