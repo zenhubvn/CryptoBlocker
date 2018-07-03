@@ -179,9 +179,17 @@ else
 }
 
 ## Enumerate shares
+Write-Host "`n####"
+Write-Host "Processing ProtectList.."
+### move file from C:\Windows\System32 or whatever your relative path is to the directory of this script
 if (Test-Path .\ProtectList.txt)
 {
-    $drivesContainingShares = Get-Content .\ProtectList.txt | ForEach-Object { $_.Trim() }
+    Move-Item -Path .\ProtectList.txt -Destination $PSScriptRoot\ProtectList.txt -Force
+}
+
+if (Test-Path $PSScriptRoot\ProtectList.txt)
+{
+    $drivesContainingShares = Get-Content $PSScriptRoot\ProtectList.txt | ForEach-Object { $_.Trim() }
 }
 Else {
     $drivesContainingShares =   @(Get-WmiObject Win32_Share | 
@@ -212,9 +220,15 @@ $monitoredExtensions = @(ConvertFrom-Json20 $jsonStr | ForEach-Object { $_.filte
 # Process SkipList.txt
 Write-Host "`n####"
 Write-Host "Processing SkipList.."
-If (Test-Path .\SkipList.txt)
+### move file from C:\Windows\System32 or whatever your relative path is to the directory of this script
+if (Test-Path .\SkipList.txt)
 {
-    $Exclusions = Get-Content .\SkipList.txt | ForEach-Object { $_.Trim() }
+    Move-Item -Path .\SkipList.txt -Destination $PSScriptRoot\SkipList.txt -Force
+}
+
+If (Test-Path $PSScriptRoot\SkipList.txt)
+{
+    $Exclusions = Get-Content $PSScriptRoot\SkipList.txt | ForEach-Object { $_.Trim() }
     $monitoredExtensions = $monitoredExtensions | Where-Object { $Exclusions -notcontains $_ }
 
 }
@@ -234,13 +248,20 @@ Else
 # entries before applying the list to your FSRM implementation.
 #
 '@
-    Set-Content -Path .\SkipList.txt -Value $emptyFile
+    Set-Content -Path $PSScriptRoot\SkipList.txt -Value $emptyFile
 }
 
 # Check to see if we have any local patterns to include
-If (Test-Path .\IncludeList.txt)
+Write-Host "`n####"
+Write-Host "Processing IncludeList.."
+### move file from C:\Windows\System32 or whatever your relative path is to the directory of this script
+if (Test-Path .\IncludeList.txt)
 {
-    $includeExt = Get-Content .\IncludeList.txt | ForEach-Object { $_.Trim() }
+    Move-Item -Path .\IncludeList.txt -Destination $PSScriptRoot\IncludeList.txt -Force
+}
+If (Test-Path $PSScriptRoot\IncludeList.txt)
+{
+    $includeExt = Get-Content $PSScriptRoot\IncludeList.txt | ForEach-Object { $_.Trim() }
     $monitoredExtensions = $monitoredExtensions + $includeExt
 }
 
