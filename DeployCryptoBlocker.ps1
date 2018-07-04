@@ -304,6 +304,22 @@ $drivesContainingShares | ForEach-Object {
     &filescrn.exe Screen Add "/Path:$_" "/SourceTemplate:$fileTemplateName"
 }
 
+# Add Folder Exceptions from ExcludeList.txt
+If (Test-Path .\ExcludePaths.txt) {
+    Write-Host "`n####"
+    Write-Host "Processing Folder Exclusions.."
+    Get-Content .\ExcludePaths.txt | ForEach-Object {
+        If (Test-Path $_) {
+            # Build the argument list with all required fileGroups
+            $ExclusionArgs = 'Exception', 'Add', "/Path:$_"
+            ForEach ($group in $fileGroups) {
+                $ExclusionArgs += "/Add-Filegroup:$($group.fileGroupName)"
+            }
+            &filescrn.exe $ExclusionArgs
+        }
+    }
+}
+
 # Cleanup temporary files if they were created
 Write-Host "`n####"
 Write-Host "Cleaning up temporary stuff.."
