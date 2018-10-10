@@ -305,10 +305,15 @@ $drivesContainingShares | ForEach-Object {
 }
 
 # Add Folder Exceptions from ExcludeList.txt
-If (Test-Path .\ExcludePaths.txt) {
-    Write-Host "`n####"
-    Write-Host "Processing Folder Exclusions.."
-    Get-Content .\ExcludePaths.txt | ForEach-Object {
+Write-Host "`n####"
+Write-Host "Processing ExcludeList.."
+### move file from C:\Windows\System32 or whatever your relative path is to the directory of this script
+if (Test-Path .\ExcludePaths.txt)
+{
+    Move-Item -Path .\ExcludePaths.txt -Destination $PSScriptRoot\ExcludePaths.txt -Force
+}
+If (Test-Path $PSScriptRoot\ExcludePaths.txt) {
+    Get-Content $PSScriptRoot\ExcludePaths.txt | ForEach-Object {
         If (Test-Path $_) {
             # Build the argument list with all required fileGroups
             $ExclusionArgs = 'Exception', 'Add', "/Path:$_"
