@@ -214,8 +214,10 @@ Write-Host "The following shares needing to be protected: $($drivesContainingSha
 Write-Host "`n####"
 Write-Host "Dowloading CryptoLocker file extensions list from fsrm.experiant.ca api.."
 
-$jsonStr = Invoke-WebRequest -Uri https://fsrm.experiant.ca/api/v1/get
-$monitoredExtensions = @(ConvertFrom-Json20 $jsonStr | ForEach-Object { $_.filters })
+# CHANGE AFTER fsrm.experiant.ca STOPPED WORKING 11/23/2022
+###$jsonStr = Invoke-WebRequest -Uri https://fsrm.experiant.ca/api/v1/get
+###$monitoredExtensions = @(ConvertFrom-Json20 $jsonStr | ForEach-Object { $_.filters })
+$monitoredExtensions = $webClient.DownloadString("https://github.com/rivir/CryptoBlocker/raw/master/list")
 
 # Process SkipList.txt
 Write-Host "`n####"
