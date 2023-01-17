@@ -15,7 +15,7 @@ def create_json_file():
             knownExtensions
     }
     with open("KnownExtensions.txt", "w") as outFile:
-        json.dump(jsonTemp, outFile)
+        outFile.write(str(jsonTemp))
 
 
 create_json_file()
