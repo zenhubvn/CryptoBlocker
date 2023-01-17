@@ -13,6 +13,7 @@ jobs:
     - name: Commit files  # transfer the new html files back into the repository
       run: |
         git config --local user.name  ${{ github.actor }}
+        git commit -a
         git commit -m "Updated the KnownExtensions.txt file"
     - name: Push changes  # push the output folder to your repo
       uses: ad-m/github-push-action@master
