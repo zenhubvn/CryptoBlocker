@@ -1,7 +1,12 @@
 name: Create Known Extension text file
 
+#on:
+#  workflow_dispatch
+
 on:
-  workflow_dispatch
+  push:
+    paths:
+      - 'list.txt'
 
 jobs:
   run_script:
