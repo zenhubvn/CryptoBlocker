@@ -1664,7 +1664,6 @@ $RECYCLE.BIN.{*-*-*-*}
 *.WAmarlocked
 *.WCRYT
 *.WFA_RANSOM
-Developing!
 *.WHY
 *.WHY…
 *.WINDOWS
@@ -4066,8 +4065,6 @@ Developing!
 *.sun
 *.support
 *.support@anonymous-service.cc.ppdddp
-*.support@anonymous-service.cc.ppdddp
-Unusual
 *.supported2017
 *.supportfiless24@protonmail.ch
 *.suppose666
