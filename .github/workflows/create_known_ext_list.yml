@@ -14,7 +14,8 @@ jobs:
       run: python create_known_ext_list.py
     - name: Commit files
       run: |
-        git config --local user.name  ${{ github.actor }}
+        git config --global user.email github-actions[bot]@users.noreply.github.com
+        git config --global user.name ${{ github.actor }}
         git add ./KnownExtensions.txt
         git commit -m "Updated the KnownExtensions.txt file"
     - name: Push changes  # push the output folder to your repo
