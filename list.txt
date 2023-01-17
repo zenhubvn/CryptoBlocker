@@ -1,4 +1,4 @@
-! ПРОЧТИ МЕНЯ !.htmll
+! ПРОЧТИ МЕНЯ !.html
 !! RETURN FILES !!.txt
 !!! HOW TO DECRYPT FILES !!!.txt
 !!! READ THIS - IMPORTANT !!!.txt
