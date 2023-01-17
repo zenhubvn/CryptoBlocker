@@ -4,18 +4,8 @@ on:
   workflow_dispatch
 
 jobs:
-  build:
+  run_script:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
-
-    - name: Create JSON file
-      run: |
-        python -c "import json; data = [line.rstrip() for line in open('list.txt')]; with open('list_file.json', 'w') as f: json.dump(data, f)"
+    - name: Run script
+      run: python create_known_ext_list.py
