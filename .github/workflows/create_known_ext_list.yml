@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        token: ${{ secrets.GH_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
     - name: Run script
       run: python create_known_ext_list.py
     - name: Commit files
