@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 
 def create_json_file():
-    with open("list.txt", "r") as file:
+    with open("list.txt", "r", encoding="utf8") as file:
         knownExtensions = [line.strip() for line in file]
     jsonTemp = {
         "api": {
@@ -14,7 +14,7 @@ def create_json_file():
         "filters": 
             knownExtensions
     }
-    with open("KnownExtensions.txt", "w") as outFile:
+    with open("KnownExtensions.txt", "w", encoding="utf8") as outFile:
         outFile.write(str(jsonTemp))
 
 
