@@ -1,3 +1,15 @@
+*.iswr
+*.znto
+*.znws
+*.znsm
+*.bpws
+*.pouu
+*.poqw
+*.zouu
+*.KoRyA
+*.RYKCRYPT
+*.zoqw
+*.mao
 *.[*].Black
 *.PUTIN
 *.znto
