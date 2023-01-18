@@ -1,5 +1,5 @@
 
-name: Create Known Extension text file
+name: Check for duplicated items in list text file
 
 on:
   workflow_dispatch
