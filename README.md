@@ -1,3 +1,16 @@
+Update 17-01-2023
+==============
+
+As of writing this. The list (https://fsrm.experiant.ca/#rawlist) hasn't been updated since 23th of november 2022.
+
+In this repo is a list.txt file than contains the known extensions items as new ones get discovered they will be added to that list. Once the list.txt file gets updated a workflow action gets called to paste the content in the KnownExtensions.txt that uses the same json layout adding the total count and timestamp as well.
+
+Got any new extension or missing extensions? Create a issue and I will add them to update the list.
+
+You can use this link inside your scripts to get these extensions to stay up to date as new extensions will get added!
+https://raw.githubusercontent.com/DFFspace/CryptoBlocker/master/KnownExtensions.txt
+
+
 CryptoBlocker
 ==============
 
