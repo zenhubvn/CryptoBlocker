@@ -1,0 +1,15 @@
+
+name: Create Known Extension text file
+
+on:
+  workflow_dispatch
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Run script
+      run: python check_duplicates.py
