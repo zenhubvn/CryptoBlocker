@@ -12,7 +12,7 @@ def check_duplicated_extensions():
 
     # When reading the line numbers make sure to add +1 as we start the count from zero
     for extension_name, line_number in indeces.items():
-        if len(line_number) > 1:
+        if len(line_number) >= 1:
             # Create a error and output the duplicates, fix them and than run again
             print(extension_name, line_number, file=sys.stderr)
             sys.exit(59)
