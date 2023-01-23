@@ -1,3 +1,7 @@
+*.MrWhite
+*.mztu
+*.r0n
+*.nlb
 *.royal_w
 *.canadian
 *.buddyransome
