@@ -4,8 +4,9 @@ from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.service import Service as ChromiumService
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.utils import ChromeType
 from csv import DictWriter
 import sys
 
@@ -16,7 +17,7 @@ field_names = ['EXTENSION', 'RANSOMEWARE_NAME', 'LINK_URL']
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
 options.add_argument('--no-sandbox')
-browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+browser = webdriver.Chrome(service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()), options=options)
 browser.get(website_url)
 timeout_secs: int = 20
 waiting = WebDriverWait(browser, timeout_secs)	
