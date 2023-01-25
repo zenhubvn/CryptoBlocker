@@ -14,8 +14,8 @@ count = 0
 field_names = ['EXTENSION', 'RANSOMEWARE_NAME', 'LINK_URL']
 
 options = webdriver.ChromeOptions()
-options.add_argument("--allow-running-insecure-content")
-options.add_argument("--ignore-certificate-errors")
+options.add_argument("--headless")
+options.add_argument('--no-sandbox')
 browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 browser.get(website_url)
 timeout_secs: int = 20
