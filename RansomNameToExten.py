@@ -21,13 +21,13 @@ browser = webdriver.Chrome(service=ChromiumService(ChromeDriverManager(chrome_ty
 browser.get(website_url)
 timeout_secs: int = 20
 waiting = WebDriverWait(browser, timeout_secs)	
-waiting.until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div[1]/div[1]/div[1]/main/form/table[1]/tbody/tr[1]/td[2]/input')))
 
 with open("list.txt", "r", encoding="utf8") as file:
     lines = [line.strip() for line in file.readlines()]
     for line in lines:
         count += 1
         try:
+            waiting.until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div[1]/div[1]/div[1]/main/form/table[1]/tbody/tr[1]/td[2]/input')))
             browser.find_element("xpath", '/html/body/div/div[1]/div[1]/div[1]/main/form/table[1]/tbody/tr[1]/td[2]/input').send_keys(line)
             browser.find_element("xpath", '/html/body/div/div[1]/div[1]/div[1]/main/form/table[1]/tbody/tr[1]/td[3]/button').click()
             browser.find_element("xpath", '/html/body/div/div[1]/div[1]/div[1]/main/form/table[1]/tbody/tr[1]/td[2]/input').clear()
