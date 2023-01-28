@@ -1,3 +1,5 @@
+*.sickfile
+*.bitenc
 *.HONESTBITCOIN
 *.fora
 *.PORTHUB
