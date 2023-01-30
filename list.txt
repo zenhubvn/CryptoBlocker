@@ -1,3 +1,11 @@
+*.LRO
+*.Proxima
+*.winner
+*.bigspermhorseballs
+*.hicrypt
+*.unknown
+*.ZFX
+*.assm
 *.sickfile
 *.bitenc
 *.HONESTBITCOIN
