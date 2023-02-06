@@ -1,3 +1,15 @@
+*.rwg
+*.sunjn
+*.dodov2
+*.auto
+*.scytaleSECC*
+*.masons
+*.mekwyk
+*.dgnlwjw
+*.honkai 
+*.onion700
+*.Erop
+*.Erqw
 *.LRO
 *.Proxima
 *.winner
