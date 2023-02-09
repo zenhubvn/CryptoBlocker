@@ -1,3 +1,8 @@
+*_[ID-*_Mail-*].*
+ransom.htm*
+andrianov.txt
+*.1iyT6bav7VyWM5
+*.args
 *.rwg
 *.sunjn
 *.dodov2
@@ -6,7 +11,7 @@
 *.masons
 *.mekwyk
 *.dgnlwjw
-*.honkai 
+*.honkai
 *.onion700
 *.Erop
 *.Erqw
