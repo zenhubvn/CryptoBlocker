@@ -1,3 +1,16 @@
++README-WARNING+.txt
+*.google
+*.snwkz
+*.stolen
+*.jron
+!!!READ_ME_MEDUSA!!!.txt
+*.zteqqd
+*.tils
+*.SHTORM
+*.saw
+*.iotr
+*.iowd
+*.ioqa
 *[id-*].[*@*.*].*
 *@paradisenewgenshinimpact.top*
 How to Recovery.bat
