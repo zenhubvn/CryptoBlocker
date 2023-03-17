@@ -1,3 +1,9 @@
+*.dazx
+*.dapo
+*.kmufesd
+*.basn
+*.Merlin
+*.usr
 *.damarans
 *.darth
 *.shiverer
