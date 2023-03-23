@@ -1,3 +1,7 @@
+*.Rans-A
+*.tywd
+*.tycx
+*.darz
 *.exilenceTG
 *.darj
 *.dazx
