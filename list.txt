@@ -1,3 +1,6 @@
+*.random_string@BLOCKED
+*.tyos
+*.typo
 *.Rans-A
 *.tywd
 *.tycx
