@@ -1,3 +1,7 @@
+*.jyos
+*.jywd
+*.jypo
+*.Skynet
 *.*@BLOCKED
 *.tyos
 *.typo
