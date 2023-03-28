@@ -1,8 +1,9 @@
+*.Hairysquid
+*.sus
 *.dark_power
 *.jyos
 *.jywd
 *.jypo
-*.Skynet
 *.*@BLOCKED
 *.tyos
 *.typo
