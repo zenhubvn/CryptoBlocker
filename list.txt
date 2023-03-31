@@ -1,3 +1,5 @@
+*.nifr
+*.niwm
 money_message.log
 *.Cylance
 CYLANCE_README.txt
