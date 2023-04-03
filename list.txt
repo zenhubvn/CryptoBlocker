@@ -1,3 +1,5 @@
+*.nitz
+*.kigatsu
 *.nifr
 *.niwm
 money_message.log
