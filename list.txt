@@ -1,3 +1,4 @@
+*.VapeV7
 *.Cooper
 *.blackbytent
 *.nitz
