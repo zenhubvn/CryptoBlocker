@@ -1,3 +1,5 @@
+*.kiwm
+*.kifr
 *.VapeV7
 *.Cooper
 *.blackbytent
