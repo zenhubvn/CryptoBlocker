@@ -1,3 +1,7 @@
+*.vector_
+*.skylock
+*.kitz
+*.kiop
 *.kiwm
 *.kifr
 *.VapeV7
