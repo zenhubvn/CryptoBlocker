@@ -1,3 +1,4 @@
+*.boza
 *.vector_
 *.skylock
 *.kitz
