@@ -1,3 +1,4 @@
+*.boty
 *.boza
 *.vector_
 *.skylock
