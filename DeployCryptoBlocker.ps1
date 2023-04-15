@@ -1,5 +1,5 @@
 # DeployCryptoBlocker.ps1
-# Version: 1.1
+# Version: 1.2
 #####
 
 ################################ USER CONFIGURATION ################################
@@ -33,20 +33,12 @@ $EventNotification = $env:TEMP + "\tmpEvent001.tmp"
 ## de
 #"Message=Das System hat erkannt, dass Benutzer [Source Io Owner] versucht hat, die Datei [Source File Path] unter [File Screen Path] auf Server [Server] zu speichern. Diese Datei weist Übereinstimmungen mit der Dateigruppe [Violated File Group] auf, die auf dem System nicht zulässig ist." >> $EventNotification
 
+# Known Extensions URL variable
+$KnownExtensionsListURL = "https://raw.githubusercontent.com/DFFspace/CryptoBlocker/master/KnownExtensions.txt"
+
 ################################ USER CONFIGURATION ################################
 
 ################################ Functions ################################
-
-Function ConvertFrom-Json20
-{
-    # Deserializes JSON input into PowerShell object output
-    Param (
-        [Object] $obj
-    )
-    Add-Type -AssemblyName System.Web.Extensions
-    $serializer = New-Object System.Web.Script.Serialization.JavaScriptSerializer
-    return ,$serializer.DeserializeObject($obj)
-}
 
 Function New-CBArraySplit
 {
@@ -212,11 +204,10 @@ Write-Host "The following shares needing to be protected: $($drivesContainingSha
 
 # Download list of CryptoLocker file extensions
 Write-Host "`n####"
-Write-Host "Dowloading CryptoLocker file extensions list from fsrm.experiant.ca api.."
+Write-Host "Dowloading CryptoLocker file extensions list from DFFspace/CryptoBlocker/master/KnownExtensions.txt.."
 
 # 
-$jsonStr = Invoke-WebRequest -Uri https://raw.githubusercontent.com/DFFspace/CryptoBlocker/master/KnownExtensions.txt
-$monitoredExtensions = @(ConvertFrom-Json20 $jsonStr | ForEach-Object { $_.filters })
+$monitoredExtensions = ((Invoke-WebRequest -Uri $UpdateURL -ErrorAction Stop).Content | ConvertFrom-Json).filters
 
 # Process SkipList.txt
 Write-Host "`n####"
