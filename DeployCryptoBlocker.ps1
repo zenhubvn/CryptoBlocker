@@ -207,7 +207,7 @@ Write-Host "`n####"
 Write-Host "Dowloading CryptoLocker file extensions list from DFFspace/CryptoBlocker/master/KnownExtensions.txt.."
 
 # 
-$monitoredExtensions = ((Invoke-WebRequest -Uri $UpdateURL -ErrorAction Stop).Content | ConvertFrom-Json).filters
+$monitoredExtensions = ((Invoke-WebRequest -Uri $KnownExtensionsListURL -ErrorAction Stop).Content | ConvertFrom-Json).filters
 
 # Process SkipList.txt
 Write-Host "`n####"
