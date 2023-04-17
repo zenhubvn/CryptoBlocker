@@ -1,3 +1,4 @@
+*.coty
 *.coza
 *.Recov
 *.kafan
