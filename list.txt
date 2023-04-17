@@ -1,3 +1,7 @@
+*.coza
+*.Recov
+*.kafan
+*.crik
 *.boty
 *.boza
 *.vector_
