@@ -1,3 +1,8 @@
+*.tangem
+*.skynetlock
+*.kmbgdftfgdlf
+*.gold
+*.m9SRob
 *.coty
 *.coza
 *.Recov
