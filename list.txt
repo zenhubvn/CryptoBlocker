@@ -1,3 +1,6 @@
+*.crlk
+*.pwpdvl
+*.ul8dlsj86v
 *.tangem
 *.skynetlock
 *.kmbgdftfgdlf
