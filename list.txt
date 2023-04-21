@@ -1,3 +1,4 @@
+*.attackuk
 *.crlk
 *.pwpdvl
 *.ul8dlsj86v
