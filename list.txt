@@ -1,3 +1,5 @@
+*.VoNiX
+*.rea
 *.attackuk
 *.crlk
 *.pwpdvl
