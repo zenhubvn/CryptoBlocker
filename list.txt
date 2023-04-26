@@ -1,3 +1,6 @@
+*.attack7
+*.foty
+*.foza
 *.VoNiX
 *.rea
 *.attackuk
