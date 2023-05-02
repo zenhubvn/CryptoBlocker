@@ -1,3 +1,5 @@
+*.sato
+*.saba
 *.fofd
 *.devinn
 *.attack7
