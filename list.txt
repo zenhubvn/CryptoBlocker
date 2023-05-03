@@ -1,3 +1,11 @@
+*.attacksystem
+*.zhong
+*.Vypt
+*.rec_rans
+*.h3r
+*.BOOM
+*.CrypBits256PT2
+*.crYptA3
 *.sato
 *.saba
 *.fofd
