@@ -1,3 +1,4 @@
+*.btc-Apt2
 *.attacksystem
 *.zhong
 *.Vypt
