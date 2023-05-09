@@ -1,3 +1,8 @@
+*.CTS*
+*.Suffering
+*.Solix
+*.newlocker
+*.BrightNight
 *.Antoni
 *.qopz
 *.qore
