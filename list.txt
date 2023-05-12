@@ -4,7 +4,7 @@
 *.zipp3rs
 *.SIGSCH
 *.gash
-*.poop69
+*.poop69news@gmail.com
 *.CTS*
 *.Suffering
 *.Solix
