@@ -1,3 +1,10 @@
+*.id[].[*].WIN
+*.GoldenWolf42
+*.gatz
+*.zipp3rs
+*.SIGSCH
+*.gash
+*.poop69
 *.CTS*
 *.Suffering
 *.Solix
