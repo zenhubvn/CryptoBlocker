@@ -1,3 +1,9 @@
+*.xatz
+*.xash
+*.blackrock
+*.sMilE
+*.cyb
+*.ADMON
 *.id[].[*].WIN
 *.GoldenWolf42
 *.gatz
