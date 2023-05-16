@@ -1,3 +1,5 @@
+*.xaro
+*.olsavelock31
 *.xatz
 *.xash
 *.blackrock
