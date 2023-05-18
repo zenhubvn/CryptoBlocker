@@ -1,3 +1,4 @@
+*.adfuhbazi
 *.xaro
 *.olsavelock31
 *.xatz
