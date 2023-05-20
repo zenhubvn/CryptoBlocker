@@ -1,3 +1,4 @@
+*.Alphaware
 *.adfuhbazi
 *.xaro
 *.olsavelock31
