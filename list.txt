@@ -1,3 +1,6 @@
+*.gaze
+*.gatq
+*.gapo
 *.Alphaware
 *.adfuhbazi
 *.xaro
