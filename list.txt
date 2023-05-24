@@ -1,3 +1,6 @@
+*.itlock*
+*.olsavelock*
+*.GAGUP
 *.gaze
 *.gatq
 *.gapo
