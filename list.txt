@@ -1,3 +1,7 @@
+*.werz
+*.weon
+*.xCor
+*.tiywepxb
 *.vatq
 *.vapo
 *.vaze
