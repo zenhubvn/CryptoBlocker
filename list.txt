@@ -1,3 +1,4 @@
+*.weqp
 *.werz
 *.weon
 *.xCor
