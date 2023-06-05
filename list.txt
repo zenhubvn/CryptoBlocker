@@ -1,3 +1,8 @@
+*.NBR
+*.nerz
+*.neon
+*.thx
+*.neqp
 *.weqp
 *.werz
 *.weon
