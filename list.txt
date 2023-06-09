@@ -1,3 +1,4 @@
+*.mono
 *.NBR
 *.nerz
 *.neon
