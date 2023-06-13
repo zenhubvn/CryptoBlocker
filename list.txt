@@ -1,3 +1,8 @@
+*.ahui
+*.ahgr
+*.ahtw
+*.minime
+*.TMRCRYPTOR
 *.mono
 *.NBR
 *.nerz
