@@ -1,5 +1,5 @@
 *.XXXXXX
-*.busavelock
+*.busavelock*
 *.LMAO
 *.ahui
 *.ahgr
