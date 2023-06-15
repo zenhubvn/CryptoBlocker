@@ -1,3 +1,5 @@
+*.qxtfkslrf
+*.babyduck
 *.XXXXXX
 *.busavelock*
 *.LMAO
