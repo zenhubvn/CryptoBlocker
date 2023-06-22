@@ -1,3 +1,5 @@
+*.jcrypt
+*.bhgr
 *.bhtw
 *.bhui
 *.DcRat
