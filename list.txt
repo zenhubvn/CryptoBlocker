@@ -1,3 +1,6 @@
+*.blueeagle
+*.SaherBlueEagle
+*.MaxSteelSaherBlueEagle
 *.jcrypt
 *.bhgr
 *.bhtw
