@@ -1,3 +1,10 @@
+*.tghz
+*.tgpo
+*.tgvv
+*.WAGNER
+*.TUGA
+*.lazareus
+*.cyborg*
 *.blueeagle
 *.SaherBlueEagle
 *.MaxSteelSaherBlueEagle
