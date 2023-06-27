@@ -1,3 +1,13 @@
+*.malloxx
+*.maloxx
+*.malox
+*.keygroup*
+*.marlock*
+*.down_with_usa
+Read@My.txt
+*.8Base
+*eightbase*
+*.anti-us
 *.tghz
 *.tgpo
 *.tgvv
