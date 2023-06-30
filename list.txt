@@ -1,3 +1,17 @@
+*.agvv
+*.aghz
+*.agpo
+*.BISAMWARE
+*.rhysida
+*.1352FF327
+*.XVGV
+*.ljubi
+*.blastoise
+*.doydo
+*.resq100
+*.timecrystal*
+*.DARKKUR*
+*.DarkCrypt
 *.havoc
 *.malloxx
 *.maloxx
