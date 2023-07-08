@@ -1,3 +1,8 @@
+*.tcvjuo
+*.hgjzitlxe
+*.wazp
+*.wayn
+*.protect*
 *.FACKOFF!
 *.agvv
 *.aghz
