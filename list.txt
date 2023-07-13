@@ -1,3 +1,6 @@
+*.hackedbySnea575
+*.gaqq
+*.waqq
 *.rajah
 *.gazp
 *.gayn
