@@ -1,3 +1,5 @@
+*.NURRI
+available_for_trial.*
 *.hackedbySnea575
 *.gaqq
 *.waqq
