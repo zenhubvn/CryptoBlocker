@@ -1,3 +1,4 @@
+*.mynvhefutrx
 *.raasv2
 #*instructions-*#.*
 *.PrO
