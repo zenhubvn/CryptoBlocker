@@ -1,3 +1,13 @@
+*.raasv2
+#*instructions-*#.*
+*.PrO
+*.OGUtdoNRE
+*.miza
+*.miqe
+*.mitu
+*.Id(*)email(*).REAL
+*.0kK3
+*.RSFDD
 *.NURRI
 available_for_trial.*
 *.hackedbySnea575
