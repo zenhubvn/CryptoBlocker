@@ -1,3 +1,5 @@
+*_SSEAR
+*.[[*]].[[*@*]].sophos
 *.mynvhefutrx
 *.raasv2
 #*instructions-*#.*
