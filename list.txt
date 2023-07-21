@@ -1,3 +1,6 @@
+*.khronos
+*.2QZ3
+Restore-My-Files.txt
 *_SSEAR
 *.[[*]].[[*@*]].sophos
 *.mynvhefutrx
