@@ -1,3 +1,7 @@
+*.Hunt2
+*.LOCK2023
+*.kizu
+*.kiqu 
 *.khronos
 *.2QZ3
 Restore-My-Files.txt
