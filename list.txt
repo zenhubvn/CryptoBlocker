@@ -1,3 +1,5 @@
+*.architects
+*.kitu
 *.Hunt2
 *.LOCK2023
 *.kizu
