@@ -1,3 +1,5 @@
+*.wsaz
+*.wsuu
 *.architects
 *.kitu
 *.Hunt2
