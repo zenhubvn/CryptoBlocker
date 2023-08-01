@@ -1,3 +1,7 @@
+*.popn
+*.poaz
+*.pouu
+*.Z0V
 *.wspn
 *.wsaz
 *.wsuu
