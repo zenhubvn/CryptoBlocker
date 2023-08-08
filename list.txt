@@ -1,3 +1,7 @@
+*.id-*.[*].GPT
+*.monochrome
+*.yytw
+*.yyza
 *.lockedbycrybaby
 *.monochromebear
 *.krize
