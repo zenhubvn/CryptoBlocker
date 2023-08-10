@@ -1,3 +1,11 @@
+*.SYTCO
+*.PUUUK
+*.crypterdodo
+*.harward
+*.bspojzo
+*.pzcqyq
+*.PrOToN
+*.Wagner2.0
 *.id-*.[*].GPT
 *.monochrome
 *.yytw
