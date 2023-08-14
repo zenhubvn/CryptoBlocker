@@ -1,3 +1,5 @@
+*.tasa
+*.taoy
 *.SYTCO
 *.PUUUK
 *.crypterdodo
