@@ -1,3 +1,5 @@
+*.taqw
+*.allahuakbar
 *.tasa
 *.taoy
 *.SYTCO
