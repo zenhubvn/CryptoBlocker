@@ -1,3 +1,7 @@
+*.*.inc
+*.ice
+*.knight_l
+*.alock
 *.taqw
 *.allahuakbar
 *.tasa
