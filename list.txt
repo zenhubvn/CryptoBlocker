@@ -1,3 +1,8 @@
+*.jasa
+*.jaqw
+*.jaoy
+[*@*.*][*]*.*.DATA
+*.Rainman
 *.Retch
 *.*.inc
 *.ice
