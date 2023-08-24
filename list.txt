@@ -1,3 +1,9 @@
+*.wzoq
+*.FreeWorldEncryption
+*.id[*].[*].top
+*.lAeSUZDqb
+lAeSUZDqb.README.txt
+*.wztt
 *.wzsa
 *.wzoy
 *.wzqw
