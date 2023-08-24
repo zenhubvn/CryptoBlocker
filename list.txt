@@ -1,3 +1,7 @@
+*.wzsa
+*.wzoy
+*.wzqw
+*.wztt
 *.jasa
 *.jaqw
 *.jaoy
