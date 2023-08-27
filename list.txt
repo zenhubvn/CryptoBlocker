@@ -1,3 +1,5 @@
+*.wzer
+*.id[*].[*@*].com
 *.wzoq
 *.FreeWorldEncryption
 *.id[*].[*].top
