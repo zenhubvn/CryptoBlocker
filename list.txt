@@ -1,3 +1,7 @@
+*.lomer
+*.crYptA
+*.kmrox
+*.Payola
 *.wzer
 *.id[*].[*@*].com
 *.wzoq
