@@ -1,3 +1,11 @@
+*.teza
+*.errorwindows
+*.steloj
+*.kuiper
+*.nzoq
+*.nzer
+*.nzqw
+*.nztt
 *.lomer
 *.crYptA
 *.kmrox
