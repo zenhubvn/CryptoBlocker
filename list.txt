@@ -1,3 +1,9 @@
+*.rival
+*.sub_to_crypto_nwo
+*.rzew
+*.rzfu
+*.rzml
+*.rzkd
 *.CYCLOPS
 *.deadnet*
 *.teza
