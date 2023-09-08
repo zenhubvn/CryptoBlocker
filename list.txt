@@ -1,3 +1,7 @@
+*.alvaro
+*.Grounding Conductor.zip
+*.s4b
+*.magaskosh
 *.rival
 *.sub_to_crypto_nwo
 *.rzew
