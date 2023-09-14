@@ -1,3 +1,5 @@
+*.ooza
+*.oopl
 *.anontsugumi
 *.6y8dghklp
 *.PISCOSTRUI
