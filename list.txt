@@ -1,3 +1,7 @@
+*.ooty
+*.spotifyxbiden
+*.B-Panther
+*.wwhu
 *.nnll
 *.nnyy
 *.nnww
