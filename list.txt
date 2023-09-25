@@ -1,3 +1,10 @@
+*.Daysv3
+*.azop
+*.azqt
+*.azhi
+*CiphBit*
+*[ID=*]-[E-Mail=*]*
+*.eldritch
 *.ooty
 *.spotifyxbiden
 *.B-Panther
