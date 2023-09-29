@@ -1,3 +1,7 @@
+*.readtext*
+*.hacking
+*.meduza*
+*.mzre
 *.gpay
 *.Got
 *.Dook
