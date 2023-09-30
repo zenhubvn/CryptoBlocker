@@ -1,3 +1,4 @@
+*.ELCTRONIC
 *.readtext*
 *.hacking
 *.meduza*
