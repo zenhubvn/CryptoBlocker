@@ -1,3 +1,5 @@
+*.ttwq
+*.ttrd
 *.ELCTRONIC
 *.readtext*
 *.hacking
