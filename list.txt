@@ -1,3 +1,10 @@
+*.coronolock
+*.peekaboo
+*.hyj
+*.savelock*
+*.ttza
+*.ttap
+*.byee
 *.ttwq
 *.ttrd
 *.ELCTRONIC
