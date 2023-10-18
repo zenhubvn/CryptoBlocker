@@ -1,3 +1,16 @@
+*.keylock
+*.hjutm
+*.prtz
+*.MesaCorp
+*.crypto*
+*.pthh
+*.ptqw
+*.locknet
+*.hazard*
+*.mlap
+*.mlza
+*.mlwq
+*.mlrd
 *.coronolock
 *.peekaboo
 *.hyj
