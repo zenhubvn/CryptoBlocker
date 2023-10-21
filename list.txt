@@ -1,3 +1,17 @@
+*.halo
+*.itqw
+*.itrz
+*.ithh
+*.powerranges
+*.Slide
+*.ptrz
+*.[*@*].2023
+*.XRET
+Read ME (Decryptor).txt
+*.34r7hGr455
+*.th
+*.r543t
+*.groundingconductor
 *.keylock
 *.hjutm
 *.prtz
