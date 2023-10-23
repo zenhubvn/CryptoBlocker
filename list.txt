@@ -1,3 +1,6 @@
+*.mallab
+*.Lambda
+*.recoverygr
 *.halo
 *.itqw
 *.itrz
