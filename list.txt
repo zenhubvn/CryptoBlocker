@@ -1,3 +1,8 @@
+*.zpww
+*.zput
+*.zpas
+*.BlackDream
+*.jarjets
 *.mallab
 *.Lambda
 *.recoverygr
