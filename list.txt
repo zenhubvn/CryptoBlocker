@@ -1,3 +1,9 @@
+*.Ran
+*.whole
+*.ppvw
+*.ppvt
+*.ppvs
+*.BlackHat*
 *.zpww
 *.zput
 *.zpas
