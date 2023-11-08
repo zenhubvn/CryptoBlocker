@@ -1,3 +1,13 @@
+*.jzeq
+*.jzie
+*.FUETE
+*.RCHAT
+*.vices0ciety
+*.deepindeep
+*.34678
+*.GoTiS
+*.zombi2
+*.read*
 *.yzaq
 *.yzoo
 *.yzqe
