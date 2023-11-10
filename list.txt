@@ -1,3 +1,5 @@
+*.sion
+*.L0CK3D
 *.jzeq
 *.jzie
 *.FUETE
