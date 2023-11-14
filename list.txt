@@ -1,3 +1,5 @@
+*.Pig865qq
+*.1337
 *.sion
 *.L0CK3D
 *.jzeq
