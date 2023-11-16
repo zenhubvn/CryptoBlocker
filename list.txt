@@ -1,3 +1,7 @@
+*.eqza
+*.shanova
+message_from_mesa.*
+*.MesaEncrypt
 *.Pig865qq
 *.1337
 *.sion
