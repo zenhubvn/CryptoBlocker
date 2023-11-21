@@ -1,3 +1,6 @@
+*.DangerSiker
+*.VXUG
+*.iicc
 *.eqew
 *.eqza
 *.shanova
