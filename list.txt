@@ -1,3 +1,5 @@
+*.help_restoremydata
+*.blo
 *.gyza
 *.gyew
 *.gycc
