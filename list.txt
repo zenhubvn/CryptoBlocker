@@ -1,3 +1,5 @@
+*.doctorhelp
+*.intel
 *.LEAKDB
 *.jazi
 *.jawr
