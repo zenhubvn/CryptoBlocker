@@ -1,3 +1,9 @@
+*.BlackLegion
+*.cahbtMhMa
+*.MoHsVxKYI
+*.RAWLD
+*.xro*
+*.eply
 *.doctorhelp
 *.intel
 *.LEAKDB
