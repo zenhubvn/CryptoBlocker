@@ -1,3 +1,5 @@
+*.nbzi
+*.nbwr
 *.BlackLegion
 *.cahbtMhMa
 *.MoHsVxKYI
