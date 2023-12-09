@@ -1,3 +1,4 @@
+*.GrafGrafel
 *.nbzi
 *.nbwr
 *.BlackLegion
