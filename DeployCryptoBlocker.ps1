@@ -293,7 +293,7 @@ Write-Host "Adding/replacing File Screens.."
 $drivesContainingShares | ForEach-Object {
     Write-Host "File Screen for [$_] with Source Template [$fileTemplateName].."
     &filescrn.exe Screen Delete "/Path:$_" /Quiet
-    &filescrn.exe Screen Add "/Path:$_" "/SourceTemplate:$fileTemplateName"
+    &filescrn.exe Screen Add "/Path:$_" "/SourceTemplate:$fileTemplateName" # "/Add-Filegroup:Custom Files"
 }
 
 # Add Folder Exceptions from ExcludeList.txt
@@ -308,10 +308,12 @@ If (Test-Path $PSScriptRoot\ExcludePaths.txt) {
     Get-Content $PSScriptRoot\ExcludePaths.txt | ForEach-Object {
         If (Test-Path $_) {
             # Build the argument list with all required fileGroups
+			$ExclusionArgsDe = 'Exception', 'Delete', "/Path:$_" ,"/Quiet"
             $ExclusionArgs = 'Exception', 'Add', "/Path:$_"
             ForEach ($group in $fileGroups) {
                 $ExclusionArgs += "/Add-Filegroup:$($group.fileGroupName)"
             }
+            &filescrn.exe $ExclusionArgsDe
             &filescrn.exe $ExclusionArgs
         }
     }
