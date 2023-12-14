@@ -1,3 +1,9 @@
+*.dati*
+*.frogo
+*.bulock*
+*.rXT0T5
+*.hhaz
+*.hhuy
 *.GrafGrafel
 *.nbzi
 *.nbwr
